@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swalka Enterprises | Sand, Gravel, Dust & Cement</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#F26B1D;
+  --orange-dark:#C4510E;
+  --orange-glow:#FFF0E6;
+  --charcoal:#181818;
+  --charcoal-mid:#252525;
+  --mid:#3A3A3A;
+  --sand:#F7F2EC;
+  --muted:#888;
+  --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--charcoal);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(24,24,24,0.97);backdrop-filter:blur(10px);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:3px solid var(--orange)}
+.nav-logo{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:1px;text-decoration:none}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#ccc;text-decoration:none;font-size:0.9rem;font-weight:500;letter-spacing:0.5px;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding:0 6%;padding-top:66px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,#2a1800 0%,#3d2200 100%);clip-path:polygon(20% 0,100% 0,100% 100%,0% 100%)}
+.hero-bg-text{position:absolute;right:3%;top:50%;transform:translateY(-50%);font-family:'Oswald',sans-serif;font-size:13rem;font-weight:700;color:rgba(242,107,29,0.07);line-height:1;user-select:none;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-badge{display:inline-block;background:var(--orange);color:var(--white);font-size:0.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:1.5rem}
+.hero h1{font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;color:var(--white);line-height:1.05;margin-bottom:1.2rem;text-transform:uppercase}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:1.05rem;color:#aaa;line-height:1.8;max-width:480px;margin-bottom:2.2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:var(--white);padding:14px 32px;border:none;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);padding:13px 30px;border:2px solid #555;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:border-color 0.2s,transform 0.15s;display:inline-block}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(242,107,29,0.95);display:flex;z-index:3}
+.stat{flex:1;padding:1.2rem 2rem;border-right:1px solid rgba(255,255,255,0.2);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;color:var(--white)}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.85);font-weight:500;letter-spacing:0.5px;text-transform:uppercase}
+.products{background:var(--sand);padding:90px 6%}
+.section-tag{font-size:0.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:0.8rem}
+.section-title{font-family:'Oswald',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title span{color:var(--orange)}
+.section-sub{font-size:1rem;color:var(--muted);margin-bottom:3.5rem;max-width:500px;line-height:1.7}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.product-card{background:var(--white);border-radius:6px;overflow:hidden;border:1px solid #e8e0d6;transition:transform 0.25s,box-shadow 0.25s}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(242,107,29,0.15)}
+.product-icon{height:160px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;background:var(--charcoal-mid)}
+.product-body{padding:1.4rem}
+.product-body h3{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:600;text-transform:uppercase;margin-bottom:0.5rem}
+.product-body p{font-size:0.88rem;color:var(--muted);line-height:1.7}
+.product-tag{display:inline-block;margin-top:1rem;font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange);padding:3px 10px;border-radius:2px}
+.why{padding:90px 6%;background:var(--white)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.why-big-box{background:var(--charcoal);border-radius:8px;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.why-big-box::before{content:'10';font-family:'Oswald',sans-serif;font-size:9rem;font-weight:700;color:rgba(242,107,29,0.12);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1}
+.why-big-box h2{font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;color:var(--white);position:relative;z-index:1}
+.why-big-box p{color:#aaa;font-size:1rem;position:relative;z-index:1;margin-top:0.4rem}
+.why-small-boxes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.mini-box{background:var(--orange-glow);border:1px solid rgba(242,107,29,0.25);border-radius:6px;padding:1.2rem;text-align:center}
+.mini-box .num{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:var(--orange)}
+.mini-box .lbl{font-size:0.78rem;color:var(--mid);font-weight:500;margin-top:2px}
+.features{display:flex;flex-direction:column;gap:1.5rem}
+.feature{display:flex;gap:1.2rem;align-items:flex-start}
+.feature-icon{width:52px;height:52px;min-width:52px;background:var(--orange-glow);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;border:1px solid rgba(242,107,29,0.2)}
+.feature h4{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:600;text-transform:uppercase;margin-bottom:0.3rem}
+.feature p{font-size:0.88rem;color:var(--muted);line-height:1.7}
+.services{background:var(--charcoal);padding:90px 6%}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.service-card{background:var(--charcoal-mid);border:1px solid #333;border-radius:6px;padding:2rem;transition:border-color 0.2s,transform 0.2s}
+.service-card:hover{border-color:var(--orange);transform:translateY(-4px)}
+.service-num{font-family:'Oswald',sans-serif;font-size:2.5rem;font-weight:700;color:rgba(242,107,29,0.3);margin-bottom:0.5rem}
+.service-card h3{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;color:var(--white);text-transform:uppercase;margin-bottom:0.8rem}
+.service-card p{font-size:0.88rem;color:#888;line-height:1.75}
+.contact{padding:90px 6%;background:var(--sand)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-item-icon{width:48px;height:48px;min-width:48px;background:var(--orange);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--white)}
+.contact-item h4{font-weight:600;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;color:var(--mid)}
+.contact-item p{font-size:1rem;color:var(--charcoal);font-weight:500}
+.contact-form{background:var(--white);border-radius:8px;padding:2.5rem;border:1px solid #e8e0d6;box-shadow:0 10px 40px rgba(0,0,0,0.06)}
+.contact-form h3{font-family:'Oswald',sans-serif;font-size:1.4rem;font-weight:600;text-transform:uppercase;margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.form-group label{font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--mid)}
+.form-group input,.form-group textarea,.form-group select{padding:11px 14px;border:1.5px solid #ddd;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--charcoal);background:var(--white);outline:none;transition:border-color 0.2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--orange)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-submit{width:100%;background:var(--orange);color:var(--white);padding:14px;border:none;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s,transform 0.15s;letter-spacing:0.5px}
+.form-submit:hover{background:var(--orange-dark);transform:translateY(-2px)}
+.success-msg{display:none;background:#eafaf0;border:1px solid #5cb85c;color:#2e7d32;padding:12px 16px;border-radius:4px;margin-top:1rem;font-size:0.9rem;text-align:center}
+footer{background:var(--charcoal);color:#888;padding:2.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:3px solid var(--orange)}
+.footer-logo{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white)}
+.footer-logo span{color:var(--orange)}
+footer p{font-size:0.82rem}
+@media(max-width:900px){
+  .why-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.2)}
+  .stat:last-child{border-bottom:none}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  nav .nav-links{display:none}
+  .hero{padding-top:80px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">SWALKA <span>ENTERPRISES</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="btn-primary" href="#contact" style="padding:10px 22px;font-size:0.85rem">Get a Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text">BUILD</div>
+  <div class="hero-content">
+    <div class="hero-badge">Wholesale &amp; Retail · Sangod, Rajasthan</div>
+    <h1>Building<br>Materials<br>You Can <span>Trust</span></h1>
+    <p>Premium quality Sand, Gravel, Stone Dust &amp; Cement — delivered at honest prices. Serving builders, contractors &amp; households across Sangod for over 10 years.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#products">Our Products</a>
+      <a class="btn-outline" href="tel:+919982683775">Call Now</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Core Products</div></div>
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Clients</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Honest Pricing</div></div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-tag">What We Offer</div>
+  <h2 class="section-title">Our <span>Products</span></h2>
+  <p class="section-sub">We supply premium construction materials for every type of project — big or small, wholesale or retail.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🏖️</div>
+      <div class="product-body">
+        <h3>Sand (Reti)</h3>
+        <p>Fine-grade construction sand ideal for plastering, masonry and concrete work. Clean, well-graded and consistent quality.</p>
+        <span class="product-tag">Wholesale &amp; Retail</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🪨</div>
+      <div class="product-body">
+        <h3>Gravel (Gitti)</h3>
+        <p>Crushed stone aggregate for foundations, RCC work and road construction. Available in multiple sizes to suit your project.</p>
+        <span class="product-tag">Wholesale &amp; Retail</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🌫️</div>
+      <div class="product-body">
+        <h3>Stone Dust</h3>
+        <p>Fine crushed stone powder used for filling joints, base layers and surface leveling. Excellent for paving and landscaping.</p>
+        <span class="product-tag">Wholesale &amp; Retail</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🧱</div>
+      <div class="product-body">
+        <h3>Cement</h3>
+        <p>Top-brand cement in bulk and retail packs. OPC and PPC grades available for all construction needs.</p>
+        <span class="product-tag">Wholesale &amp; Retail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-tag">Why Choose Us</div>
+  <h2 class="section-title">Trusted by <span>Hundreds</span></h2>
+  <p class="section-sub">We've built our reputation one delivery at a time — on quality, fair pricing and honest work.</p>
+  <div class="why-grid">
+    <div class="why-visual">
+      <div class="why-big-box">
+        <h2>10+ Years</h2>
+        <p>In the business of building trust</p>
+      </div>
+      <div class="why-small-boxes">
+        <div class="mini-box"><div class="num">500+</div><div class="lbl">Clients Served</div></div>
+        <div class="mini-box"><div class="num">4</div><div class="lbl">Products</div></div>
+        <div class="mini-box"><div class="num">W&R</div><div class="lbl">Wholesale &amp; Retail</div></div>
+        <div class="mini-box"><div class="num">✔</div><div class="lbl">Honest Pricing</div></div>
+      </div>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">💰</div>
+        <div>
+          <h4>Fair &amp; Transparent Pricing</h4>
+          <p>Everyone deserves quality materials at reasonable prices. No hidden charges — what you see is what you pay.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <div>
+          <h4>Honesty First</h4>
+          <p>Our business is built on trust. We never compromise on material quality and always deliver exactly what we promise.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏗️</div>
+        <div>
+          <h4>10+ Years of Experience</h4>
+          <p>Over a decade of serving builders, contractors and households in Sangod and surrounding areas with consistent excellence.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <div>
+          <h4>Prompt Delivery</h4>
+          <p>We understand your project timelines. Our team ensures your materials arrive on time, every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-tag">What We Do</div>
+  <h2 class="section-title" style="color:#fff">Our <span style="color:var(--orange)">Services</span></h2>
+  <p class="section-sub" style="color:#888">From small home projects to large construction sites — we have you covered.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>Bulk Wholesale Supply</h3>
+      <p>Large-volume orders for contractors and developers at the best wholesale rates. Consistent supply, timely delivery.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Retail Sales</h3>
+      <p>Individual homeowners and small builders can purchase materials in smaller quantities at fair retail prices. No order too small.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Free Consultation</h3>
+      <p>Not sure what material or quantity you need? Our experienced team will guide you to the right choice for your project.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3>Doorstep Delivery</h3>
+      <p>We deliver directly to your site or home in Sangod and nearby areas — saving you time and effort.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-tag">Reach Us</div>
+  <h2 class="section-title">Get In <span>Touch</span></h2>
+  <p class="section-sub">Have a requirement? Call us or fill in the form below.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div><h4>Phone</h4><p>+91 99826 83775</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div><h4>Address</h4><p>Adalat Circle, Sangod, Rajasthan</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div><h4>Business Hours</h4><p>Mon – Sat: 8:00 AM – 7:00 PM</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🏗️</div>
+        <div><h4>We Supply</h4><p>Sand · Gravel · Stone Dust · Cement</p></div>
+      </div>
+      <a href="tel:+919982683775" class="btn-primary" style="margin-top:1rem;text-align:center;display:block">📞 Call — 99826 83775</a>
+    </div>
+    <div class="contact-form">
+      <h3>Send an Enquiry</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" id="cname" placeholder="e.g. Ramesh Kumar"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" id="cphone" placeholder="e.g. 98765 43210"></div>
+      </div>
+      <div class="form-group">
+        <label>Material Needed</label>
+        <select id="cmaterial">
+          <option value="">-- Select a Product --</option>
+          <option>Sand (Reti)</option>
+          <option>Gravel (Gitti)</option>
+          <option>Stone Dust</option>
+          <option>Cement</option>
+          <option>Multiple Products</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Order Type</label>
+        <select id="corder">
+          <option value="">-- Select --</option>
+          <option>Wholesale</option>
+          <option>Retail</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message / Requirements</label>
+        <textarea id="cmsg" placeholder="Tell us the quantity, delivery location, or any other details..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Submit Enquiry ➜</button>
+      <div class="success-msg" id="successMsg">✅ Thank you! We will contact you shortly.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SWALKA <span>ENTERPRISES</span></div>
+  <p>Adalat Circle, Sangod, Rajasthan &nbsp;|&nbsp; +91 99826 83775</p>
+  <p>© 2025 Swalka Enterprises. All rights reserved.</p>
+</footer>
+
+<script>
+function submitForm(){
+  var n=document.getElementById('cname').value.trim();
+  var p=document.getElementById('cphone').value.trim();
+  var m=document.getElementById('cmaterial').value;
+  if(!n||!p||!m){alert('Please fill in your name, phone number and material needed.');return;}
+  document.getElementById('successMsg').style.display='block';
+  document.getElementById('cname').value='';
+  document.getElementById('cphone').value='';
+  document.getElementById('cmaterial').value='';
+  document.getElementById('corder').value='';
+  document.getElementById('cmsg').value='';
+}
+</script>
+</body>
+</html>
